@@ -38,13 +38,13 @@ with st.sidebar:
         st.info("전용 ID를 기억하면 대화내용을 이어갈 수 있습니다.")
         st.divider()
         st.subheader("질문 예시")
-        st.info("")
-        st.info("")
+        st.info("학교생활규정은 매년 개정해야 하나요?")
+        st.info("학생생활규정 제ㆍ개정 위원회는 어떻게 구성하나요?")
 
 # 스레드 ID 입력란을 자동으로 업데이트
 thread_id = st.text_input("전용 ID", value=st.session_state.thread_id)
 
-st.title("초등학교 학생자치규정 보조 챗봇")
+st.title("초등학교 학생생활규정 보조 챗봇")
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "안녕하세요, 저는 초등학교 학생생활규정 보조 챗봇입니다. 먼저 왼쪽의 '대화 시작'버튼을 눌러주세요. 무엇을 도와드릴까요?"}]
 
