@@ -16,8 +16,6 @@ with st.sidebar:
     if thread_btn:
         thread = client.beta.threads.create()
         st.session_state.thread_id = thread.id  # 스레드 ID를 session_state에 저장
-        st.subheader(f"Created Thread ID: {st.session_state.thread_id}")
-        st.info("전용 ID가 생성되었습니다.")
         st.info("전용 ID를 기억하면 대화내용을 이어갈 수 있습니다.")
         st.divider()
         st.subheader("질문 예시")
