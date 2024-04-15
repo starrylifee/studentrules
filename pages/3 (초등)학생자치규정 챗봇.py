@@ -3,7 +3,7 @@ import streamlit as st
 import time
 
 # 업데이트된 Assistant ID
-assistant_id = "asst_Jt8caQoydCaqw7FULcNrrilu"
+assistant_id = "asst_1gxtoDfzz1OMWGDLh6NCg6jv"
 client = OpenAI(api_key=st.secrets["api_key3"])
 
 with st.sidebar:
@@ -21,13 +21,13 @@ with st.sidebar:
         st.info("전용 ID를 기억하면 대화내용을 이어갈 수 있습니다.")
         st.divider()
         st.subheader("질문 예시")
-        st.info("학생생활규정에서 정하고 있지 않은 사유로 징계 조치를 할 수 있나요?")
-        st.info("학생선도위원회에서 두 가지 이상의 징계를 동시에 내릴 수 있나요?")
+        st.info("")
+        st.info("")
 
 # 스레드 ID 입력란을 자동으로 업데이트
 thread_id = st.text_input("전용 ID", value=st.session_state.thread_id)
 
-st.title("초등학교 학생선도규정 보조 챗봇")
+st.title("초등학교 학생자치규정 보조 챗봇")
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "안녕하세요, 저는 초등학교 학생생활규정 보조 챗봇입니다. 먼저 왼쪽의 '대화 시작'버튼을 눌러주세요. 무엇을 도와드릴까요?"}]
 
