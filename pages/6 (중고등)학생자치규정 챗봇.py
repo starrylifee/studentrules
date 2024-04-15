@@ -31,12 +31,16 @@ with st.sidebar:
         st.session_state.thread_id = ""
 
     thread_btn = st.button("대화 시작")
-
     if thread_btn:
         thread = client.beta.threads.create()
         st.session_state.thread_id = thread.id  # 스레드 ID를 session_state에 저장
         st.info("전용 ID를 기억하면 대화내용을 이어갈 수 있습니다.")
-        st.divider()
+
+    st.divider()
+    if "show_examples" not in st.session_state:
+        st.session_state.show_examples = True
+
+    if st.session_state.show_examples:
         st.subheader("질문 예시")
         st.info("")
         st.info("")

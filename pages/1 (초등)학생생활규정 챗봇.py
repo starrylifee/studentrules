@@ -35,10 +35,16 @@ with st.sidebar:
         thread = client.beta.threads.create()
         st.session_state.thread_id = thread.id  # 스레드 ID를 session_state에 저장
         st.info("전용 ID를 기억하면 대화내용을 이어갈 수 있습니다.")
-        st.divider()
+
+    st.divider()
+    if "show_examples" not in st.session_state:
+        st.session_state.show_examples = True
+
+    if st.session_state.show_examples:
         st.subheader("질문 예시")
         st.info("학교생활규정은 매년 개정해야 하나요?")
         st.info("학생생활규정 제ㆍ개정 위원회는 어떻게 구성하나요?")
+
 
 # 스레드 ID 입력란을 자동으로 업데이트
 thread_id = st.text_input("전용 ID", value=st.session_state.thread_id)
