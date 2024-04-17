@@ -66,7 +66,7 @@ def main():
             st.info("학생생활규정 제ㆍ개정 위원회는 어떻게 구성하나요?")
 
     # 스레드 ID 입력란을 자동으로 업데이트
-    thread_id = st.text_input("전용 ID", value=st.session_state.thread_id)
+    thread_id = st.session_state.thread_id
 
     st.title("중고등학교 학생생활규정 보조 챗봇")
     if "messages" not in st.session_state:

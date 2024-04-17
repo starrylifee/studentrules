@@ -67,7 +67,7 @@ def main():
             st.info("화장, 장신구, 써클렌즈, 문신 등을 제한하는 조항을 두어도 되나요?")
 
     # 스레드 ID 입력란을 자동으로 업데이트
-    thread_id = st.text_input("전용 ID", value=st.session_state.thread_id)
+    thread_id = st.session_state.thread_id
 
     st.title("초등학교 학생생활규정 보조 챗봇")
     if "messages" not in st.session_state:
