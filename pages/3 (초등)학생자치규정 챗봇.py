@@ -65,6 +65,8 @@ def main():
             st.info("")
             st.info("")
 
+    # 스레드 ID 입력란을 자동으로 업데이트
+    thread_id = st.text_input("전용 ID", value=st.session_state.thread_id)
 
     st.title("초등학교 학생자치규정 보조 챗봇")
     if "messages" not in st.session_state:

@@ -65,6 +65,8 @@ def main():
             st.info("학생생활규정에서 정하고 있지 않은 사유로 징계 조치를 할 수 있나요?")
             st.info("학생선도위원회에서 두 가지 이상의 징계를 동시에 내릴 수 있나요?")
 
+    # 스레드 ID 입력란을 자동으로 업데이트
+    thread_id = st.text_input("전용 ID", value=st.session_state.thread_id)
 
     st.title("초등학교 학생선도규정 보조 챗봇")
     if "messages" not in st.session_state:
