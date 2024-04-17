@@ -52,8 +52,13 @@ def main():
 
         thread_btn = st.button("대화 시작")
         if thread_btn:
-            thread = client.beta.threads.create()
-            st.session_state.thread_id = thread.id  # 스레드 ID를 session_state에 저장
+            try:
+                thread = client.beta.threads.create()
+                st.session_state.thread_id = thread.id  # 스레드 ID를 session_state에 저장
+                st.success("대화가 시작되었습니다!")
+            except Exception as e:
+                st.error("대화 시작에 실패했습니다. 다시 시도해주세요.")
+                st.error(str(e))
 
         st.divider()
         if "show_examples" not in st.session_state:
