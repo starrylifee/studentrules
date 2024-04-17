@@ -54,7 +54,6 @@ def main():
         if thread_btn:
             thread = client.beta.threads.create()
             st.session_state.thread_id = thread.id  # 스레드 ID를 session_state에 저장
-            st.info("전용 ID를 기억하면 대화내용을 이어갈 수 있습니다.")
 
         st.divider()
         if "show_examples" not in st.session_state:
@@ -64,9 +63,8 @@ def main():
             st.subheader("질문 예시")
             st.info("학교생활규정은 매년 개정해야 하나요?")
             st.info("학생생활규정 제ㆍ개정 위원회는 어떻게 구성하나요?")
-
-    # 스레드 ID 입력란을 자동으로 업데이트
-    thread_id = st.text_input("전용 ID", value=st.session_state.thread_id)
+            st.info("휴대전화 등 전자기기를 수거해도 되나요?")
+            st.info("화장, 장신구, 써클렌즈, 문신 등을 제한하는 조항을 두어도 되나요?")
 
     st.title("초등학교 학생생활규정 보조 챗봇")
     if "messages" not in st.session_state:
@@ -78,7 +76,7 @@ def main():
     if prompt := st.chat_input():
 
         if not thread_id:
-            st.error("Please add your thread_id to continue.")
+            st.error("왼쪽의 대화시작 버튼을 눌러주세요.")
             st.stop()
 
         st.session_state.messages.append({"role": "user", "content": prompt})
