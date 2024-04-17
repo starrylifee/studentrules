@@ -9,7 +9,7 @@ api_keys = [
 ]
 
 # 업데이트된 Assistant ID
-assistant_id = "asst_mwkk2fEYIEo0y6DfDSNrmtR3"
+assistant_id = "asst_1gxtoDfzz1OMWGDLh6NCg6jv"
 client = None
 
 # API 키를 순차적으로 시도하며 OpenAI 객체 생성

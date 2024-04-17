@@ -9,7 +9,7 @@ api_keys = [
 ]
 
 # 업데이트된 Assistant ID
-assistant_id = "asst_mwkk2fEYIEo0y6DfDSNrmtR3"
+assistant_id = "asst_fKSFtzeZmt0zFxJlfo9bbCwu"
 client = None
 
 # API 키를 순차적으로 시도하며 OpenAI 객체 생성
@@ -48,9 +48,9 @@ with st.sidebar:
 # 스레드 ID 입력란을 자동으로 업데이트
 thread_id = st.text_input("전용 ID", value=st.session_state.thread_id)
 
-st.title("초등학교 학생생활규정 보조 챗봇")
+st.title("중고등학교 학생생활규정 보조 챗봇")
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "안녕하세요, 저는 초등학교 학생생활규정 보조 챗봇입니다. 먼저 왼쪽의 '대화 시작'버튼을 눌러주세요. 무엇을 도와드릴까요?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "안녕하세요, 저는 중고등학교 학생생활규정 보조 챗봇입니다. 먼저 왼쪽의 '대화 시작'버튼을 눌러주세요. 무엇을 도와드릴까요?"}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
