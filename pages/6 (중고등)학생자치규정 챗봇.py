@@ -15,6 +15,7 @@ def load_css():
         textarea {
             background-color: #FFFFFF !important; /* 실제 입력 필드의 배경색도 흰색으로 변경 */
         }
+
     </style>
     """
     st.markdown(css, unsafe_allow_html=True)
@@ -66,8 +67,10 @@ def main():
 
         if st.session_state.show_examples:
             st.subheader("질문 예시")
-            st.info("")
-            st.info("")
+            st.info("선거관리규정 외에 세부적인 선거 약속을 다른 방식으로 정해도 되나요?")
+            st.info("선거관리규정을 반드시 별도로 두어야 할까요?")
+            st.info("‘학교내의 봉사’의 징계를 받은 학생에 대한 피선거권 제한을 해도 괜찮을까요?")
+            st.info("학생자치와 학교생활과 관련된 의사결정과정에 학생 참여권의 실질적 보장을 위해서는 규정의 정비를 어떻게 해야 하나요?")
 
     # 스레드 ID 입력란을 자동으로 업데이트
     thread_id = st.session_state.thread_id

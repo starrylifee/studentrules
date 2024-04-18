@@ -15,6 +15,7 @@ def load_css():
         textarea {
             background-color: #FFFFFF !important; /* 실제 입력 필드의 배경색도 흰색으로 변경 */
         }
+
     </style>
     """
     st.markdown(css, unsafe_allow_html=True)

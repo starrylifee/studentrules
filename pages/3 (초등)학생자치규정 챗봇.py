@@ -67,8 +67,10 @@ def main():
 
         if st.session_state.show_examples:
             st.subheader("질문 예시")
-            st.info("")
-            st.info("")
+            st.info("선거관리규정을 반드시 별도로 두어야 할까요?")
+            st.info("‘학교내의 봉사’의 징계를 받은 학생에 대한 피선거권 제한을 해도 괜찮을까요?")
+            st.info("초등학교의 경우 전교학생회 정·부회장 선거 투표권을 4학년부터 주면 될까요?")
+            st.info("전교어린이회 규정이나 다모임규정만 있으면, 학생자치규정을 보완하여 개정해야 할까요?")
 
     # 스레드 ID 입력란을 자동으로 업데이트
     thread_id = st.session_state.thread_id

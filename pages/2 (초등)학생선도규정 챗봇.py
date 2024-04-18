@@ -68,7 +68,9 @@ def main():
         if st.session_state.show_examples:
             st.subheader("질문 예시")
             st.info("학생생활규정에서 정하고 있지 않은 사유로 징계 조치를 할 수 있나요?")
-            st.info("학생선도위원회에서 두 가지 이상의 징계를 동시에 내릴 수 있나요?")
+            st.info("학교내의 봉사 및 사회봉사는 학생생활기록부에 봉사활동으로 인정될 수 있나요?")
+            st.info("학생생활규정에서 정하고 있지 않은 사유로 징계 조치를 할 수 있나요?")
+            st.info("재심 청구와 재심의 신청은 어떻게 다른 것인가요?")
 
     # 스레드 ID 입력란을 자동으로 업데이트
     thread_id = st.session_state.thread_id
