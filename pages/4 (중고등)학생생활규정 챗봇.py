@@ -25,7 +25,7 @@ def main():
     # 초기화 조건 수정
     if "initialized" not in st.session_state:
         st.session_state.thread_id = ""  # 스레드 ID 초기화
-        st.session_state.messages = [{"role": "assistant", "content": "안녕하세요, 저는 초등학교 학생생활규정 보조 챗봇입니다. 먼저 왼쪽의 '대화 시작'버튼을 눌러주세요. 무엇을 도와드릴까요?"}]  # 초기 메시지 설정
+        st.session_state.messages = [{"role": "assistant", "content": "안녕하세요, 저는 중학교 고등학교 학생생활규정 보조 챗봇입니다. 먼저 왼쪽의 '대화 시작'버튼을 눌러주세요. 무엇을 도와드릴까요?"}]  # 초기 메시지 설정
         st.session_state.initialized = True
 
     # API 키 리스트
