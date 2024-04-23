@@ -22,6 +22,12 @@ def load_css():
 def main():
     load_css()  # 배경색 스타일 로드
 
+    # 초기화 조건 수정
+    if "initialized" not in st.session_state:
+        st.session_state.thread_id = ""  # 스레드 ID 초기화
+        st.session_state.messages = [{"role": "assistant", "content": "안녕하세요, 저는 초등학교 학생생활규정 보조 챗봇입니다. 먼저 왼쪽의 '대화 시작'버튼을 눌러주세요. 무엇을 도와드릴까요?"}]  # 초기 메시지 설정
+        st.session_state.initialized = True
+
     # API 키 리스트
     api_keys = [
         st.secrets["api_key7"], st.secrets["api_key8"], st.secrets["api_key9"],
@@ -36,20 +42,17 @@ def main():
     for index, api_key in enumerate(api_keys):
         try:
             client = OpenAI(api_key=api_key)
-            break  # 성공적으로 객체를 생성하면 반복 종료
+            break
         except Exception as e:
-            st.error(f"API 키 {index + 7} 실패: {str(e)}")  # 인덱스에 7을 더하여 실제 키 순서를 표시
-            continue  # 다음 키로 넘어감
+            st.error(f"API 키 {index + 7} 실패: {str(e)}")
+            continue
 
     if not client:
         st.error("모든 API 키가 실패했습니다.")
-        st.stop()  # 모든 키가 실패한 경우, 실행 중지
+        st.stop()
 
     with st.sidebar:
         # 스레드 ID 관리
-        if "thread_id" not in st.session_state:
-            st.session_state.thread_id = ""
-
         thread_btn = st.button("대화 시작")
         if thread_btn:
             try:
@@ -66,23 +69,19 @@ def main():
 
         if st.session_state.show_examples:
             st.subheader("질문 예시")
-            st.info("학생생활규정에서 정하고 있지 않은 사유로 징계 조치를 할 수 있나요?")
-            st.info("학생선도위원회에서 두 가지 이상의 징계를 동시에 내릴 수 있나요?")
-            st.info("학생이 학교 밖에서 절도 및 도박 등의 사항으로 경찰서에서 보호처분을 받았습니다. 이 경우 학교에서 학생선도위원회를 열어 징계처분을 내릴 경우 이중 처벌이 되는 것은 아닌가요?")
-            st.info("11월경에 학생선도위원회 개최가 예정되어 있습니다. 개최 사유는 해당 학생의 흡연 및 절도이며, 흡연은 9월, 절도는 10월에 각각 발생하였습니다. 학생선도위원회에서 흡연은 교내봉사, 절도는 특별교육이수로 조치를 나누어 해도 될까요?")
+            st.info("기존 선도위원회, 학생징계위원회 등 기구의 명칭을 모두 반드시 학생 선도위원회로 변경하여야 하는 것인가요?")
+            st.info("학생에게 학교내의 봉사, 사회봉사, 특별교육이수 등의 징계 조치를 할 떄, 시간과 일수에 상한은 없는 것인가요?")
+            st.info("학교내의 봉사 및 사회 봉사는 학생생활기록부에 봉사활동으로 인정될 수 있나요?")
+            st.info("학생 및 보호자(학부모 등)에게 학생선도위원회 개최 안내를 하였으나, 학생이 출석을 거부하고 있는 상황입니다. 학생 및 보호자(학부모 등)가 출석하지 않으면 개최할 수 없는 것인가요?")
 
     # 스레드 ID 입력란을 자동으로 업데이트
     thread_id = st.session_state.thread_id
 
-    st.title("중고등학교 학생선도규정 보조 챗봇")
-    if "messages" not in st.session_state:
-        st.session_state["messages"] = [{"role": "assistant", "content": "안녕하세요, 저는 중고등학교 학생생활규정 보조 챗봇입니다. 먼저 왼쪽의 '대화 시작'버튼을 눌러주세요. 무엇을 도와드릴까요?"}]
-
+    st.title("초등학교 학생생활규정 보조 챗봇")
     for msg in st.session_state.messages:
         st.chat_message(msg["role"]).write(msg["content"])
 
     if prompt := st.chat_input():
-
         if not thread_id:
             st.error("왼쪽의 대화시작 버튼을 눌러주세요.")
             st.stop()
@@ -116,7 +115,7 @@ def main():
         thread_messages = client.beta.threads.messages.list(thread_id)
 
         msg = thread_messages.data[0].content[0].text.value
-        
+
         st.session_state.messages.append({"role": "assistant", "content": msg})
         st.chat_message("assistant").write(msg)
 
