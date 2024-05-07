@@ -35,7 +35,7 @@ def main():
     ]
 
     # 업데이트된 Assistant ID
-    assistant_id = "asst_fKSFtzeZmt0zFxJlfo9bbCwu"
+    assistant_id = st.secrets["assistant_api_key4"]
     client = None
 
     # API 키를 순차적으로 시도하며 OpenAI 객체 생성
