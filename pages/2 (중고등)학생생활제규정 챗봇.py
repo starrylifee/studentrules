@@ -74,6 +74,9 @@ def main():
             st.info("학교공동체의 의견을 수렴하여 휴대전화 등 전자기기를 수거해도 되나요?")
             st.info("화장, 장신구, 써클렌즈, 문신 등을 제한하는 조항을 두어도 되나요?")
 
+        # Google Drive 파일 다운로드 링크 추가
+        st.markdown("[2023.학생생활제규정표준안(중등용_2023.12.) 다운로드](https://drive.google.com/file/d/1Vf78GT0xBkG6fbAUTQbjLm2asUVeXI0o)")
+
     # 스레드 ID 입력란을 자동으로 업데이트
     thread_id = st.session_state.thread_id
 
