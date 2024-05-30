@@ -1,6 +1,5 @@
 *.ipynb
 *.toml
 *.png
-*.pdf
 *.csv
 *.json
