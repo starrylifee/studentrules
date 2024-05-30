@@ -7,10 +7,10 @@ def load_css():
     css = """
     <style>
         body, .stApp, .stChatFloatingInputContainer {
-            background-color: #FCE4EC !important; /* 옅은 핑크색 */
+            background-color: #E0F7FA !important; /* 옅은 하늘색으로 전체 배경색 변경 */
         }
         .stChatInputContainer {
-            background-color: #FCE4EC !important; /* 옅은 핑크색 */
+            background-color: #E0F7FA !important; /* 입력 필드의 배경색도 변경 */
         }
         textarea {
             background-color: #FFFFFF !important; /* 실제 입력 필드의 배경색도 흰색으로 변경 */
@@ -25,7 +25,7 @@ def main():
     # 초기화 조건 수정
     if "initialized" not in st.session_state:
         st.session_state.thread_id = ""  # 스레드 ID 초기화
-        st.session_state.messages = [{"role": "assistant", "content": "안녕하세요, 저는 학생생활규정 보조 챗봇입니다. 먼저 왼쪽의 '대화 시작'버튼을 눌러주세요. 무엇을 도와드릴까요?"}]  # 초기 메시지 설정
+        st.session_state.messages = [{"role": "assistant", "content": "안녕하세요, 저는 초등학교 학생생활제규정 챗봇입니다. 먼저 왼쪽의 '대화 시작'버튼을 눌러주세요. 무엇을 도와드릴까요?"}]  # 초기 메시지 설정
         st.session_state.initialized = True
 
     # API 키 리스트
@@ -35,7 +35,7 @@ def main():
     ]
 
     # 업데이트된 Assistant ID
-    assistant_id = st.secrets["assistant_api_key3"]
+    assistant_id = st.secrets["assistant_api_key7"]
     client = None
 
     # API 키를 순차적으로 시도하며 OpenAI 객체 생성
@@ -69,15 +69,15 @@ def main():
 
         if st.session_state.show_examples:
             st.subheader("질문 예시")
-            st.info("학생자치와 학교생활과 관련된 의사결정과정에 학생 참여권의 실질적 보장을 위해서는 규정의 정비를 어떻게 해야 하나요?")
-            st.info("선거관리규정을 반드시 별도로 두어야 할까요?")
-            st.info("선거관리규정 외에 세부적인 선거 약속을 다른 방식으로 정해도 되나요?")
-            st.info("학교내의 봉사의 징계를 받은 학생에 대한 피선거권 제한을 해도 괜찮을까요?")
+            st.info("학생생활규정에 반드시 목적 조항을 두어야 하나요?")
+            st.info("다른 학교의 학생생활규정을 어떻게 볼 수 있나요?")
+            st.info("학교공동체의 의견을 수렴하여 휴대전화 등 전자기기를 수거해도 되나요?")
+            st.info("화장, 장신구, 써클렌즈, 문신 등을 제한하는 조항을 두어도 되나요?")
 
     # 스레드 ID 입력란을 자동으로 업데이트
     thread_id = st.session_state.thread_id
 
-    st.title("초등학교 학생자치규정 보조 챗봇")
+    st.title("초등학교 학생생활제규정 챗봇")
     for msg in st.session_state.messages:
         st.chat_message(msg["role"]).write(msg["content"])
 
