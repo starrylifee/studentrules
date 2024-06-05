@@ -39,4 +39,4 @@ st.markdown("""
 """)
 
 # 이미지 추가
-st.image("file/knlogo2.png")
+st.image("file/knlogo2.jpg")
