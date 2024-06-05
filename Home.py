@@ -32,10 +32,10 @@ st.markdown("""
 
 # 추가 자료 링크 제공
 st.markdown("""
-    가. [교육기본법](https://www.law.go.kr/법령/교육기본법)  
-    나. [초ㆍ중등교육법](https://www.law.go.kr/법령/초ㆍ중등교육법)  
-    다. [초ㆍ중등교육법 시행령](https://www.law.go.kr/법령/초ㆍ중등교육법 시행령)  
-    라. [경상남도교육청 학생자치 및 참여 활성화에 관한 조례](https://www.law.go.kr/자치법규/경상남도교육청 학생자치 및 참여 활성화에 관한 조례/(5005,20210729))
+    가. [교육기본법](https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B5%90%EC%9C%A1%EA%B8%B0%EB%B3%B8%EB%B2%95)  
+    나. [초ㆍ중등교육법](https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%B4%88%E3%86%8D%EC%A4%91%EB%93%B1%EA%B5%90%EC%9C%A1%EB%B2%95)  
+    다. [초ㆍ중등교육법 시행령](https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%B4%88%E3%86%8D%EC%A4%91%EB%93%B1%EA%B5%90%EC%9C%A1%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9)  
+    라. [경상남도교육청 학생자치 및 참여 활성화에 관한 조례](https://www.law.go.kr/%EC%9E%90%EC%B9%98%EB%B2%95%EA%B7%9C/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%EA%B5%90%EC%9C%A1%EC%B2%AD%20%ED%95%99%EC%83%9D%EC%9E%90%EC%B9%98%20%EB%B0%8F%20%EC%B0%B8%EC%97%AC%20%ED%99%9C%EC%84%B1%ED%99%94%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80)
 """)
 
 # 이미지 추가
