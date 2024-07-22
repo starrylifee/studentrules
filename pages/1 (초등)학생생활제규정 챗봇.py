@@ -2,6 +2,19 @@ from openai import OpenAI
 import streamlit as st
 import time
 
+hide_github_icon = """
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK{ display: none; }
+    #MainMenu{ visibility: hidden; }
+    footer { visibility: hidden; }
+    header { visibility: hidden; }
+    </style>
+"""
+
+st.markdown(hide_github_icon, unsafe_allow_html=True)
+
 def load_css():
     # 직접 스타일을 삽입하여 배경색을 옅은 하늘색으로 설정
     css = """
@@ -55,13 +68,14 @@ def main():
         # 스레드 ID 관리
         thread_btn = st.button("대화 시작")
         if thread_btn:
-            try:
-                thread = client.beta.threads.create()
-                st.session_state.thread_id = thread.id  # 스레드 ID를 session_state에 저장
-                st.success("대화가 시작되었습니다!")
-            except Exception as e:
-                st.error("대화 시작에 실패했습니다. 다시 시도해주세요.")
-                st.error(str(e))
+            with st.spinner('대화를 시작하는 중...'):
+                try:
+                    thread = client.beta.threads.create()
+                    st.session_state.thread_id = thread.id  # 스레드 ID를 session_state에 저장
+                    st.success("대화가 시작되었습니다!")
+                except Exception as e:
+                    st.error("대화 시작에 실패했습니다. 다시 시도해주세요.")
+                    st.error(str(e))
 
         st.divider()
         if "show_examples" not in st.session_state:
@@ -92,35 +106,36 @@ def main():
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
 
-        response = client.beta.threads.messages.create(
-            thread_id,
-            role="user",
-            content=prompt,
-        )
-
-        run = client.beta.threads.runs.create(
-            thread_id=thread_id,
-            assistant_id=assistant_id
-        )
-
-        run_id = run.id
-
-        while True:
-            run = client.beta.threads.runs.retrieve(
-                thread_id=thread_id,
-                run_id=run_id
+        with st.spinner('AI가 응답을 생성 중입니다...'):
+            response = client.beta.threads.messages.create(
+                thread_id,
+                role="user",
+                content=prompt,
             )
-            if run.status == "completed":
-                break
-            else:
-                time.sleep(2)
 
-        thread_messages = client.beta.threads.messages.list(thread_id)
+            run = client.beta.threads.runs.create(
+                thread_id=thread_id,
+                assistant_id=assistant_id
+            )
 
-        msg = thread_messages.data[0].content[0].text.value
+            run_id = run.id
 
-        st.session_state.messages.append({"role": "assistant", "content": msg})
-        st.chat_message("assistant").write(msg)
+            while True:
+                run = client.beta.threads.runs.retrieve(
+                    thread_id=thread_id,
+                    run_id=run_id
+                )
+                if run.status == "completed":
+                    break
+                else:
+                    time.sleep(2)
+
+            thread_messages = client.beta.threads.messages.list(thread_id)
+
+            msg = thread_messages.data[0].content[0].text.value
+
+            st.session_state.messages.append({"role": "assistant", "content": msg})
+            st.chat_message("assistant").write(msg)
 
 if __name__ == "__main__":
     main()
