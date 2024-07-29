@@ -34,8 +34,8 @@ with col1:
 with col2:
     # 중등학교 규정 섹션
     st.header('중등용 규정')
-    st.write('🏫 2023.학생생활제규정표준안(중등용) 자료를 검색하거나 대화를 나눌 수 있습니다.')
-    st.markdown("[2023.학생생활제규정표준안(중등용_2023.12.) 다운로드](https://drive.google.com/uc?export=download&id=1Vf78GT0xBkG6fbAUTQbjLm2asUVeXI0o)")
+    st.write('🏫 2024.학생생활제규정표준안(중등용) 자료를 검색하거나 대화를 나눌 수 있습니다.')
+    st.markdown("[2024.학생생활제규정표준안(중등용_2024.7.) 다운로드](https://drive.google.com/uc?export=download&id=160o8qWiqwdt4IeqnFjEezkMTbpDUqWnv)")
 
 # 추가적인 정보 제공 섹션
 st.markdown("""
